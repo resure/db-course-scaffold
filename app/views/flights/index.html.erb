@@ -1,0 +1,37 @@
+<%- model_class = Flight -%>
+
+<%- title 'Все рейсы' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Отправка</th>
+      <th>Прибытие</th>
+      <th>Компания</th>
+      <th>Самолет</th>
+      <%# <th>Дата добавления</th> %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @flights.each do |flight| %>
+      <tr>
+        <td><%= link_to flight.id, flight_path(flight) %></td>
+        <td><%= link_to flight.departure_airport.name, flight.departure_airport %> (<%= flight.departure.strftime('%d.%m.%y at %k:%M') %>)</td>
+        <td><%= link_to flight.arrival_airport.name, flight.arrival_airport %> (<%= flight.arrival.strftime('%d.%m.%y at %k:%M') %>)</td>
+        <td><%= link_to flight.airline.name, flight.airline %></td>
+        <td><%= link_to flight.airplane_model.name, flight.airplane_model %></td>
+        <%# <td><%= flight.created_at.strftime('%d.%m.%y at %k:%M') %1></td> %>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_flight_path(flight), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Добавить рейс',
+            new_flight_path,
+            :class => 'btn btn-primary' %>

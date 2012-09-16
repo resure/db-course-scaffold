@@ -1,0 +1,13 @@
+<%= simple_form_for @flight, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :departure, label: 'Отправка' %>
+  <%= f.input :departure_airport_id, label: 'Аэропорт отправки', collection: Airport.all.map { |a| [a.name, a.id] } %>
+  <%= f.input :arrival, label: 'Прибытие' %>
+  <%= f.input :arrival_airport_id, label: 'Аэропорт прибытия', collection: Airport.all.map { |a| [a.name, a.id] } %>
+  <%= f.input :airline_id, label: 'Компания', collection: Airline.all.map { |a| [a.name, a.id] } %>
+  <%= f.input :airplane_model_id, collection: AirplaneModel.all.map { |a| [a.name, a.id] }, label: 'Модель самолета' %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                flights_path, :class => 'btn' %>
+  </div>
+<% end %>

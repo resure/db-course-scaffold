@@ -4,7 +4,7 @@ class AirplanesController < ApplicationController
   # GET /airplanes
   # GET /airplanes.json
   def index
-    @airplanes = @airline.airplanes.all order: :created_at
+    @airplanes = @airline.airplanes order: :created_at
 
     respond_to do |format|
       format.html # index.html.erb

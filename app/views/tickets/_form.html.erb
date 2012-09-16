@@ -1,0 +1,10 @@
+<%= simple_form_for [@flight, @ticket], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :salon, collection: ['Эконом 1', 'Эконом 2', 'Бизнес', 'Первый'], label: 'Салон' %>
+  <%= f.input :seat %>
+  <%= f.input :passenger_id, label: 'Пассажир', collection: Passenger.all.map { |p| [p.full_name, p.id] } %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                flight_tickets_path(@flight), :class => 'btn' %>
+  </div>
+<% end %>

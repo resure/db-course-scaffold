@@ -95,3 +95,31 @@ if Airplane.count == 0
     end
   end
 end
+
+flights = [[1,2], [1,3], [1,4], [5,1], [1,5], [5,1], [1,5], [7,2], [6,2], [4,5], [6,4], [2,5], [6,4], [1,6]]
+
+if Flight.count == 0
+  flights.each do |airports|
+    time = -> { Time.now + Random.rand(10..100)*100000 }.call
+    Flight.create!({
+      departure: time,
+      arrival: (time + Random.rand(1000..5000)),
+      airline_id: Random.rand(1..5),
+      departure_airport_id: airports[0],
+      arrival_airport_id: airports[1],
+      airplane_model_id: Random.rand(1..3)
+    })
+  end
+end
+
+if Ticket.count == 0
+  salons = ['Эконом 1', 'Эконом 1', 'Эконом 2', 'Эконом 2', 'Бизнес', 'Бизнес', 'Первый']
+  100.times do
+    passenger = (1..25).to_a.sample
+    flight = (1..14).to_a.sample
+    salon = salons.sample
+    seat = Random.rand(1..100)
+    
+    Ticket.create! passenger_id: passenger, flight_id: flight, salon: salon, seat: seat
+  end
+end
