@@ -1,0 +1,59 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+@sansFontFamily: Verdana, "Lucida Grande", Helvetica, Arial, sans-serif;
+@serifFontFamily: Georgia, "Times New Roman", Times, serif;
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not 
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: '/assets/fontawesome-webfont.eot';
+@fontAwesomeWoffPath: '/assets/fontawesome-webfont.woff';
+@fontAwesomeTtfPath: '/assets/fontawesome-webfont.ttf';
+@fontAwesomeSvgPath: '/assets/fontawesome-webfont.svg';
+
+// Font Awesome
+@import "fontawesome";
+
+@baseFontSize: 14px;
+@baseFontFamily: @sansFontFamily;
+@linkColor: #06b;
+@linkColorHover: #a00;
+
+footer {
+  text-align: right;
+  color: #999;
+  font-size: 13px;
+  border-top: 1px dashed #DDD;
+  padding-top: 7px;
+  padding-bottom: 20px;
+}
+
+ul.user-nav {
+  li { margin-right: -10px }
+  input.search-query { margin-left: 10px }
+}
+
+div.clear {
+  clear: both;
+  display: outline;
+}
+
+div#content-wrap {
+  margin: auto auto 15px auto;
+}
+
+div.right {
+  float: right;
+}
+
+div.airplane-image {
+  img {
+    border: 1px solid #999;
+    width: 400px;
+  }
+}

@@ -1,0 +1,34 @@
+<%- model_class = AirplaneModel -%>
+<%- title 'Модели самолетов' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Наименование</th>
+      <th>Вместимость</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @airplane_models.each do |airplane_model| %>
+      <tr>
+        <td><%= link_to airplane_model.name, airplane_model_path(airplane_model) %></td>
+        <td><%= airplane_model.capacity %></td>
+        <td><%=l airplane_model.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_airplane_model_path(airplane_model), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      airplane_model_path(airplane_model),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_airplane_model_path,
+            :class => 'btn btn-primary' %>

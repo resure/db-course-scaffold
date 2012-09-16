@@ -1,0 +1,60 @@
+doctype html
+html lang='ru'
+  head
+    meta charset='utf-8'
+    meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    title = content_for?(:title) ? yield(:title) : "DB Semester Work"
+    = csrf_meta_tags
+    == yield :head
+
+    /[ if lt IE 9 ]
+      script src='http://html5shim.googlecode.com/svn/trunk/html5.js' type='text/javascript'
+
+    = stylesheet_link_tag 'application', media: 'all'
+
+    /* = favicon_link_tag '/favicon.ico', rel: 'shortcut icon' */
+
+  body
+    header.navbar.nabar-fixed-top
+      nav.navbar-inner
+        div.container-fluid
+          a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand href='/' DB Semester Work
+          div.container-fluid.nav-collapse
+            ul.nav
+              li = link_to 'Рейсы', '/sample'
+              li = link_to 'Пассажиры', '/sample'
+              li = link_to 'Компании', '/sample'
+              li = link_to 'Аэропорты', '/sample'
+            ul.nav.pull-right.user-nav
+              /* - if user_signed_in? */
+              /*   li == link_to "<i class='icon-user' style='font-size:10pt'></i>#{current_user.display_name(true)}".html_safe, '/users/resure' */
+              /*   /1* li == link_to "<i class='icon-inbox'></i>0".html_safe, '/notifications' *1/ */
+              /*   li == link_to "<i class='icon-signout'></i>Logout".html_safe, destroy_user_session_path, method: 'delete', id: :logout */
+              /* - else */
+              /*   li = link_to('<i class="icon-signin"></i> Login'.html_safe, new_user_session_path) */
+              form.navbar-search
+                input type='text' class='search-query' placeholder='Поиск'
+
+    div.container-fluid
+      div.row-fluid
+
+        = bootstrap_flash
+        div#content-wrap
+          = content_tag :h2, yield(:title), id: 'page-title' if show_title?
+          = yield
+          div.clear
+
+      footer
+        div.pull-left
+          a href='#' вверх
+        div.pull-right
+          ' &copy; bmstu ak5;
+          = ENV['GIT_TAG'] || `git describe --always`
+
+    = javascript_include_tag 'application'
+
