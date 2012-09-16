@@ -41,3 +41,13 @@ if Airport.count == 0
     Airport.create! name: name
   end
 end
+
+passengers = ['Сатель Шан', 'Вандар Токаре', 'Атрис', 'Дорак', 'Зез-Кай Элл', 'Реван', 'Кавар', 'Крея', 'Оби-Ван Кеноби', 'Квай-Гон Джинн', 'Мейс Винду', 'Йода', 'Люк Скайуокер', 'Дарт Сион', 'Дарт Малак', 'Дарт Реван', 'Дарт Плэгас', 'Дарт Сидиус', 'Дарт Вейдер', 'Дарт Мол', 'Дарт Трая', 'Дарт Нихилус', 'Нага Садоу', 'Марка Рагнос', 'Аджанта Полл']
+
+if Passenger.count == 0
+  passport = 10001
+  passengers.each do |name|
+    Passenger.create! full_name: name, passport_data: passport
+    passport = passport.next
+  end
+end
