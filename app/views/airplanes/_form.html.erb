@@ -1,0 +1,9 @@
+<%= simple_form_for @airplane, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :airplane_models_id %>
+  <%= f.input :airline_id %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                airplanes_path, :class => 'btn' %>
+  </div>
+<% end %>

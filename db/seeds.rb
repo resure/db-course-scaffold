@@ -65,3 +65,33 @@ if Airline.count == 0
     Airline.create! name: name
   end
 end
+
+airline_airplanes = [
+  {
+    airline_id: 1,
+    airplanes: [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3]
+  },
+
+  {
+    airline_id: 2,
+    airplanes: [1, 1, 1, 1, 1, 1, 2, 2, 3]
+  },
+
+  {
+    airline_id: 3,
+    airplanes: [1, 1, 1, 2, 2]
+  },
+
+  {
+    airline_id: 4,
+    airplanes: [2]
+  }
+]
+
+if Airplane.count == 0
+  airline_airplanes.each do |airline|
+    airline[:airplanes].each do |airplane|
+      Airplane.create! airline_id: airline[:airline_id], airplane_model_id: airplane
+    end
+  end
+end

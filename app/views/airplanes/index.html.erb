@@ -1,0 +1,30 @@
+<%- model_class = Airplane -%>
+<%- title "Самолеты компании #{@airline.name}" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Модель</th>
+      <th>Дата добавления</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @airplanes.each do |airplane| %>
+      <tr>
+        <td><%= airplane.id %></td>
+        <td><%= link_to airplane.airplane_model.name, airline_airplane_path(@airline, airplane) %></td>
+        <td><%= airplane.created_at.strftime('%d.%m.%y at %k:%M') %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_airline_airplane_path(@airline, airplane), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_airline_airplane_path,
+            :class => 'btn btn-primary' %>
