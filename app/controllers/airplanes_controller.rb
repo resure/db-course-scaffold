@@ -4,7 +4,7 @@ class AirplanesController < ApplicationController
   # GET /airplanes
   # GET /airplanes.json
   def index
-    @airplanes = @airline.airplanes.all
+    @airplanes = @airline.airplanes.all order: :created_at
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +46,7 @@ class AirplanesController < ApplicationController
 
     respond_to do |format|
       if @airplane.save
-        format.html { redirect_to @airplane, notice: 'Airplane was successfully created.' }
+        format.html { redirect_to [@airline, @airplane], notice: 'Airplane was successfully created.' }
         format.json { render json: @airplane, status: :created, location: @airplane }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class AirplanesController < ApplicationController
 
     respond_to do |format|
       if @airplane.update_attributes(params[:airplane])
-        format.html { redirect_to @airplane, notice: 'Airplane was successfully updated.' }
+        format.html { redirect_to [@airline, @airplane], notice: 'Airplane was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -78,7 +78,7 @@ class AirplanesController < ApplicationController
     @airplane.destroy
 
     respond_to do |format|
-      format.html { redirect_to airplanes_url }
+      format.html { redirect_to airline_airplanes_url(@airline) }
       format.json { head :no_content }
     end
   end

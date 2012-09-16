@@ -1,9 +1,8 @@
-<%= simple_form_for @airplane, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :airplane_models_id %>
-  <%= f.input :airline_id %>
+<%= simple_form_for [@airline, @airplane], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :airplane_model_id, collection: AirplaneModel.all.map {|a| [a.name, a.id] } %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                airplanes_path, :class => 'btn' %>
+                airline_airplanes_path(@airline), :class => 'btn' %>
   </div>
 <% end %>
