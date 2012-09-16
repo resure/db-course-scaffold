@@ -1,4 +1,6 @@
 Dbcourse::Application.routes.draw do
+  resources :airlines
+
   resources :passengers
 
   resources :airports

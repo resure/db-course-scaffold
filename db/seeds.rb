@@ -51,3 +51,17 @@ if Passenger.count == 0
     passport = passport.next
   end
 end
+
+airlines = [
+  'Аэрофлот',
+  'Трансаэро',
+  'S7 Airlines',
+  'Planet Express',
+  'SkyExpress'
+]
+
+if Airline.count == 0
+  airlines.each do |name|
+    Airline.create! name: name
+  end
+end
