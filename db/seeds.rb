@@ -25,3 +25,19 @@ if AirplaneModel.count == 0
     AirplaneModel.create! attr
   end
 end
+
+airports = [
+  'Домодедово',
+  'Шереметьево',
+  'Внуково',
+  'Пулково',
+  'Махачкала',
+  'Чкалов',
+  'Оренбург'
+]
+
+if Airport.count == 0
+  airports.each do |name|
+    Airport.create! name: name
+  end
+end
