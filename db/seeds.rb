@@ -107,7 +107,7 @@ if Flight.count == 0
       airline_id: (1 + Random.rand(4)),
       departure_airport_id: airports[0],
       arrival_airport_id: airports[1],
-      airplane_model_id: (1 + Random.rand(4))
+      airplane_model_id: (1 + Random.rand(2))
     })
   end
 end
