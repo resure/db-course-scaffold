@@ -9,7 +9,7 @@
   <dt><strong>Компания:</strong></dt>
   <dd><%= link_to @flight.airline.name, @flight.airline %></dd>
   <dt><strong>Самолет:</strong></dt>
-  <dd><%= link_to @flight.airplane_model.name, @flight.airplane_model %></dd>
+  <dd><%= link_to @flight.airplane.airplane_model.name, airline_airplane_path(@flight.airline, @flight.airplane) %></dd>
   <dt><strong>Билеты:</strong></dt>
   <dd><%= link_to 'Список', flight_tickets_path(@flight) %></dd>
 </dl>

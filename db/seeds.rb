@@ -101,13 +101,15 @@ flights = [[1,2], [1,3], [1,4], [5,1], [1,5], [5,1], [1,5], [7,2], [6,2], [4,5],
 if Flight.count == 0
   flights.each do |airports|
     time = -> { Time.now + (10 + Random.rand(90))*100000 }.call
+    airline = Airline.find(1 + Random.rand(4))
+    airplane = airline.airplanes.sample
     Flight.create!({
       departure: time,
       arrival: (time + (1000 + Random.rand(4000))),
-      airline_id: (1 + Random.rand(4)),
+      airline_id: airline.id,
       departure_airport_id: airports[0],
       arrival_airport_id: airports[1],
-      airplane_model_id: (1 + Random.rand(2))
+      airplane_id: airplane.id
     })
   end
 end

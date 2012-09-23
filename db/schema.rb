@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20120916182904) do
     t.datetime "departure"
     t.datetime "arrival"
     t.integer  "airline_id"
-    t.integer  "airplane_model_id"
+    t.integer  "airplane_id"
     t.integer  "departure_airport_id"
     t.integer  "arrival_airport_id"
     t.datetime "created_at",           :null => false
