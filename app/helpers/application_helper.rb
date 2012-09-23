@@ -29,6 +29,15 @@ module ApplicationHelper
     @show_title
   end
 
+  def query(query, show_query = true)
+    content_for(:query) { h(query.to_s) }
+    @show_query = show_query
+  end
+
+  def show_query?
+    @show_query
+  end
+
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }
   end

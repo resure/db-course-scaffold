@@ -1,6 +1,12 @@
 <%- model_class = Passenger -%>
 <%- title "Пассажир №#{@passenger.id}" %>
 
+<%# <%- query <<EOF %>
+<%# SELECT "passengers".* FROM "passengers" WHERE "passengers"."id" = $1 LIMIT 1 [["id", "#{@passenger.id}"]] %>
+<%# EOF %>
+<%# %>
+
+
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:full_name) %>:</strong></dt>
   <dd><%= @passenger.full_name %></dd>

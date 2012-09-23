@@ -1,4 +1,6 @@
 Dbcourse::Application.routes.draw do
+  get "tasks/index"
+
   resources :airlines do
     resources :airplanes
   end

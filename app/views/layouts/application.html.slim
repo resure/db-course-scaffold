@@ -45,6 +45,11 @@ html lang='ru'
 
         = bootstrap_flash
         div#content-wrap
+          /* - if show_query? */
+          /*   div */
+          /*     pre */
+          /*       code.class="sql" = yield(:query) */
+          /*   hr */
           = content_tag :h2, yield(:title), id: 'page-title' if show_title?
           = yield
           div.clear

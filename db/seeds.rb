@@ -104,6 +104,7 @@ if Flight.count == 0
     airline = Airline.find(1 + Random.rand(4))
     airplane = airline.airplanes.sample
     Flight.create!({
+      date: time,
       departure: time,
       arrival: (time + (1000 + Random.rand(4000))),
       airline_id: airline.id,
