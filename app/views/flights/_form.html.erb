@@ -4,7 +4,9 @@
   <%= f.input :arrival, label: 'Прибытие' %>
   <%= f.input :arrival_airport_id, label: 'Аэропорт прибытия', collection: Airport.all.map { |a| [a.name, a.id] } %>
   <%= f.input :airline_id, label: 'Компания', collection: Airline.all.map { |a| [a.name, a.id] } %>
-  <%= f.input :airplane_model_id, collection: AirplaneModel.all.map { |a| [a.name, a.id] }, label: 'Модель самолета' %>
+  <% if @flight.created_at %>
+    <%= f.input :airplane_id, collection: Airplane.where(airline_id: @flight.airline_id).map { |a| [a.airplane_model.name, a.airplane_model.id] }, label: 'Модель самолета' %>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
